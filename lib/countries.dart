@@ -3100,7 +3100,7 @@ const List<Country> countries = [
     code: "IN",
     dialCode: "91",
     minLength: 10,
-    maxLength: 10,
+    maxLength: 12,
   ),
   Country(
     name: "Indonesia",
@@ -3627,7 +3627,7 @@ const List<Country> countries = [
     code: "KW",
     dialCode: "965",
     minLength: 8,
-    maxLength: 8,
+    maxLength: 9,
   ),
   Country(
     name: "Kyrgyzstan",
@@ -7192,7 +7192,7 @@ const List<Country> countries = [
     code: "US",
     dialCode: "1",
     minLength: 10,
-    maxLength: 10,
+    maxLength: 12,
   ),
   Country(
     name: "Uruguay",

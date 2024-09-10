@@ -390,9 +390,8 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-            // borderRadius: widget.dropdownDecoration.borderRadius as BorderRadius?,
             onTap: widget.enabled ? _changeCountry : null,
-            child: SizedBox(height: 55, width: 100, child: _buildFlagsButton())),
+            child: SizedBox(height: 56, width: 100, child: _buildFlagsButton())),
         const SizedBox(width: 8),
         Expanded(
           child: TextFormField(
@@ -424,9 +423,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                   borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: Colors.white)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: Colors.white)),
-
               counterText: !widget.enabled ? '' : null,
-              // prefix: _buildFlagsButton(),
             ),
             style: widget.style,
             onSaved: (value) {
@@ -442,7 +439,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
               final phoneNumber = PhoneNumber(
                 countryISOCode: _selectedCountry.code,
                 countryCode: '+${_selectedCountry.fullCountryCode}',
-                number: value,
+                number: value.replaceAll(" ", ""),
               );
 
               if (widget.autovalidateMode != AutovalidateMode.disabled) {
@@ -475,57 +472,51 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
     );
   }
 
-  Padding _buildFlagsButton() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 0),
-      child: Container(
-        height: 70,
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-        // margin: widget.flagsButtonMargin,
-        alignment: Alignment.center,
-        child: DecoratedBox(
-          decoration: widget.dropdownDecoration,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const SizedBox(
-                width: 4,
-              ),
-              // if (widget.enabled &&
-              //     widget.showDropdownIcon &&
-              //     widget.dropdownIconPosition == IconPosition.leading) ...[
-              //   widget.dropdownIcon,
-              //   const SizedBox(width: 4),
-              // ],
-              if (widget.showCountryFlag) ...[
-                kIsWeb
-                    ? Image.asset(
-                        'assets/flags/${_selectedCountry.code.toLowerCase()}.png',
-                        package: 'intl_phone_field',
-                        width: 32,
-                      )
-                    : Text(
-                        _selectedCountry.flag,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                const SizedBox(width: 8),
-              ],
-              FittedBox(
-                child: Text(
-                  '+${_selectedCountry.dialCode}',
-                  style: widget.dropdownTextStyle,
-                ),
-              ),
-              if (widget.enabled &&
-                  widget.showDropdownIcon &&
-                  widget.dropdownIconPosition == IconPosition.trailing) ...[
-                const SizedBox(width: 4),
-                widget.dropdownIcon,
-              ],
+  Container _buildFlagsButton() {
+    return Container(
+      height: 70,
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+      alignment: Alignment.center,
+      child: DecoratedBox(
+        decoration: widget.dropdownDecoration,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(
+              width: 4,
+            ),
+            // if (widget.enabled &&
+            //     widget.showDropdownIcon &&
+            //     widget.dropdownIconPosition == IconPosition.leading) ...[
+            //   widget.dropdownIcon,
+            //   const SizedBox(width: 4),
+            // ],
+            if (widget.showCountryFlag) ...[
+              kIsWeb
+                  ? Image.asset(
+                      'assets/flags/${_selectedCountry.code.toLowerCase()}.png',
+                      package: 'intl_phone_field',
+                      width: 32,
+                    )
+                  : Text(
+                      _selectedCountry.flag,
+                      style: const TextStyle(fontSize: 18),
+                    ),
               const SizedBox(width: 8),
             ],
-          ),
+            FittedBox(
+              child: Text(
+                '+${_selectedCountry.dialCode}',
+                style: widget.dropdownTextStyle,
+              ),
+            ),
+            if (widget.enabled && widget.showDropdownIcon && widget.dropdownIconPosition == IconPosition.trailing) ...[
+              const SizedBox(width: 4),
+              widget.dropdownIcon,
+            ],
+            const SizedBox(width: 8),
+          ],
         ),
       ),
     );
