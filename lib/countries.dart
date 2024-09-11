@@ -5952,7 +5952,7 @@ const List<Country> countries = [
     code: "SA",
     dialCode: "966",
     minLength: 9,
-    maxLength: 9,
+    maxLength: 11,
   ),
   Country(
     name: "Senegal",
@@ -7130,7 +7130,7 @@ const List<Country> countries = [
     code: "AE",
     dialCode: "971",
     minLength: 9,
-    maxLength: 9,
+    maxLength: 10,
   ),
   Country(
     name: "United Kingdom",
