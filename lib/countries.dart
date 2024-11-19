@@ -1673,8 +1673,8 @@ const List<Country> countries = [
     flag: "🇭🇷",
     code: "HR",
     dialCode: "385",
-    minLength: 12,
-    maxLength: 12,
+    minLength: 1,
+    maxLength: 20,
   ),
   Country(
     name: "Cuba",

@@ -20,9 +20,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFF88CCFF),
+        backgroundColor: const Color(0xFF88CCFF),
         appBar: AppBar(
-          title: Text('Phone Field Example'),
+          title: const Text('Phone Field Example'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -31,8 +31,8 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(height: 30),
-                TextField(
+                const SizedBox(height: 30),
+                const TextField(
                   decoration: InputDecoration(
                     labelText: 'Name',
                     border: OutlineInputBorder(
@@ -40,10 +40,10 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -51,12 +51,12 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 IntlPhoneField(
                   focusNode: focusNode,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Phone Number',
                     border: OutlineInputBorder(
                       borderSide: BorderSide(),
@@ -70,11 +70,11 @@ class _MyAppState extends State<MyApp> {
                     print('Country changed to: ' + country.name);
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 MaterialButton(
-                  child: Text('Submit'),
+                  child: const Text('Submit'),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   onPressed: () {
